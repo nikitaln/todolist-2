@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo</title>
+    <style>
+        .task-form {
+            background-color: yellow;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .task-form form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 300px;
+        }
+
+        #btn-show-form {
+            width: 300px;
+            height: 100px;
+        }
+
+        .task-list {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .task-id {
+            width: 30px;
+            margin-right: 10px;
+            background-color: cyan;
+        }
+
+        .task-name {
+            width: 200px;
+            margin-right: 10px;
+            background-color: red;
+        }
+
+        .task-user {
+            width: 100px;
+            background-color: orange;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Привет новый TODO-List</h1>
+    <button id="btn-show-form">Добавить новую задачу</button>
+
+    <div class="task-form">
+        <form>
+            <h2>Добавление задачи</h2>
+            <label>Название задачи:</label>
+            <input type="text" name="taskName" value="">
+            <label>Исполнитель:</label>
+            <input type="text" name="executorName" value="">
+            <label>Срок выполнения:</label>
+            <input type="text" name="deadLine" value="">
+            <hr>
+            <button id="save-book">Сохранить</button>
+        </form>
+    </div>
+
+    <div class="task-list">
+        <div class="task-id">1</div>
+        <div class="task-name">Помыть посуду</div>
+        <div class="task-user">Иван</div>
+        <button id="btn-finish">Завершить задание</button>
+    </div>
+</body>
+</html>
