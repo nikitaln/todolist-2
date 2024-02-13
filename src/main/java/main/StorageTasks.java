@@ -16,8 +16,22 @@ public class StorageTasks {
         System.out.println("save to tasks");
     }
 
+
     public List<Task> getTasks() {
         System.out.println("get all tasks");
         return tasks;
+    }
+
+
+    public boolean deleteTask(int taskIdToRemove) {
+        for (Task task : getTasks()) {
+            if (task.getId() == taskIdToRemove) {
+                tasks.remove(task);
+                System.out.println("delete task");
+                return true;
+            }
+        }
+        System.out.println("no delete such task");
+        return false;
     }
 }

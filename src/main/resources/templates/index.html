@@ -88,7 +88,11 @@
                 <div class="task-user" th:text="${task.executorName}">Иван</div>
             </td>
             <td>
-                <button id="btn-finish" th:attr="data-id=${task.id}">Завершить задание</button>
+<!--                <button id="btn-finish" th:attr="data-id=${task.id}" method="post" th:action="@{/tasks/delete}" th:object="${task}" th:name="taskIdToRemove">Завершить задание</button>-->
+                <form method="post" th:action="@{/tasks/delete}">
+                    <button type="submit" name="btn-remove"  th:value="${task.id}">Удалить</button>
+                </form>
+
             </td>
         </tr>
     </table>

@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -29,5 +30,16 @@ public class TaskController {
         System.out.println("save controller");
         storageTasks.addTask(task);
         return "redirect:/tasks/";
+    }
+
+
+    @PostMapping(value = "/delete")
+    public String deleteTask(@RequestParam(name = "btn-remove") int taskIdToRemove) {
+        System.out.println("delete controller " + taskIdToRemove);
+        if (storageTasks.deleteTask(taskIdToRemove)) {
+            return "redirect:/tasks/";
+        } else {
+            return "index";
+        }
     }
 }
