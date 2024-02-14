@@ -73,11 +73,32 @@
             font-family: sans-serif;
         }
 
+        .task-start-date {
+            width: 100px;
+            background-color: darkseagreen;
+            margin-right: 10px;
+            font-family: sans-serif;
+        }
+
+        .task-finish-date {
+            width: 200px;
+            background-color: darkseagreen;
+            margin-right: 10px;
+            font-family: sans-serif;
+        }
+
+        .task-count-days {
+            width: 50px;
+            background-color: darkseagreen;
+            margin-right: 10px;
+            font-family: sans-serif;
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>Привет новый TODO-List</h1>
+    <h1>Новый TODO-List</h1>
     <button id="btn-show-form">Добавить новую задачу</button>
 
     <div class="task-form">
@@ -94,13 +115,16 @@
         </form>
     </div>
 
-    <h2 name="message">Список задач</h2>
+    <h2 name="message">Список задач (0)</h2>
 
     <table id="tasks">
         <tr>
             <th>ИД</th>
             <th>Название задачи</th>
             <th>Исполнитель</th>
+            <th>Дата создания</th>
+            <th>Крайний срок выполнения</th>
+            <th>Кол-во дней</th>
         </tr>
         <tr th:attr="data-id=${task.id}" th:each="task : ${tasks}">
             <td>
@@ -111,6 +135,15 @@
             </td>
             <td>
                 <div class="task-user" th:text="${task.executorName}">Иван</div>
+            </td>
+            <td>
+                <div class="task-start-date" th:text="${task.startDate}">2024-02-14</div>
+            </td>
+            <td>
+                <div class="task-finish-date" th:text="${task.finishDate}">2024-02-17</div>
+            </td>
+            <td>
+                <div class="task-count-days" th:text="${task.deadline}">3</div>
             </td>
             <td>
                 <form method="post" th:action="@{/tasks/delete}">

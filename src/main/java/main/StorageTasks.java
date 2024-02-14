@@ -1,5 +1,6 @@
 package main;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,14 @@ public class StorageTasks {
     public void addTask(Task task) {
         id = id + 1;
         task.setId(id);
+
+        LocalDate startDate = LocalDate.now();
+        int daysCount = task.getDeadline();
+        LocalDate finishDate = startDate.plusDays(daysCount);
+        System.out.println("start time: " + startDate);
+        System.out.println("finish time: " + finishDate);
+        task.setStartDate(LocalDate.now());
+        task.setFinishDate(finishDate);
         tasks.add(task);
         System.out.println("save to tasks");
     }
