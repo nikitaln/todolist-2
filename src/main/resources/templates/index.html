@@ -5,19 +5,41 @@
     <title>ToDo</title>
     <style>
 
+        html, body {
+            height: 100%;               /* растягиваем фон на всю страницу */
+            font-family: sans-serif;    /* новый шрифт без засечек */
+            font-size: 14px;            /* размер шрифта на всей странице */
+        }
+
+        .task-form form input {
+            margin-bottom: 10px;                /* отступ от нижнего блока */
+        }
+
+        .task-form form .btn-save {
+            height: 50px;
+        }
+
+        .task-form form h2 {
+            margin-top: 0;              /* нет отступа сверху */
+            text-align: center;         /* текст по центру блока */
+        }
+
         .task-form {
-            background-color: yellow;
-            width: 300px;
-            height: 300px;
-            margin-bottom: 10px;
-            margin-top: 10px;
+            background-color: darkseagreen;     /* цвет фона данного блока */
+            width: 300px;                       /* размер - ширина блока */
+            height: 300px;                      /* размер - высота блока */
+            margin-bottom: 10px;                /* отступ от нижнего блока */
+            margin-top: 10px;                   /* отступ от верхнего блока */
+            border: 1px solid grey;             /* создание границы вокруг блока в 1px серого цвета */
+            font-family: sans-serif;
         }
 
         .task-form form {
             display: flex;
             flex-direction: column;
-            width: 300px;
-            height: 300px;
+            width: 280px;
+            height: 280px;
+            padding: 10px;
         }
 
         #btn-show-form {
@@ -33,19 +55,22 @@
         .task-id {
             width: 30px;
             margin-right: 10px;
-            background-color: cyan;
+            background-color: darkseagreen;
+            font-family: sans-serif;
         }
 
         .task-name {
             width: 200px;
             margin-right: 10px;
-            background-color: red;
+            background-color: darkseagreen;
+            font-family: sans-serif;
         }
 
         .task-user {
             width: 100px;
-            background-color: orange;
+            background-color: darkseagreen;
             margin-right: 10px;
+            font-family: sans-serif;
         }
 
     </style>
@@ -65,7 +90,7 @@
             <label>Срок выполнения:</label>
             <input type="text" name="deadline" value="">
             <hr>
-            <input class="btn-save" type="submit" value="Save">
+            <input class="btn-save" type="submit" value="Сохранить">
         </form>
     </div>
 
@@ -73,9 +98,9 @@
 
     <table id="tasks">
         <tr>
-            <th>id</th>
-            <th>taskName</th>
-            <th>executorName</th>
+            <th>ИД</th>
+            <th>Название задачи</th>
+            <th>Исполнитель</th>
         </tr>
         <tr th:attr="data-id=${task.id}" th:each="task : ${tasks}">
             <td>
@@ -88,23 +113,11 @@
                 <div class="task-user" th:text="${task.executorName}">Иван</div>
             </td>
             <td>
-<!--                <button id="btn-finish" th:attr="data-id=${task.id}" method="post" th:action="@{/tasks/delete}" th:object="${task}" th:name="taskIdToRemove">Завершить задание</button>-->
                 <form method="post" th:action="@{/tasks/delete}">
-                    <button type="submit" name="btn-remove"  th:value="${task.id}">Удалить</button>
+                    <button type="submit" name="btn-remove" th:value="${task.id}">Удалить</button>
                 </form>
-
             </td>
         </tr>
     </table>
-
-
-
-<!--    <div class="task-list" th:each="task : ${tasks}">-->
-<!--        <div class="task-id" th:text="${task.id}">1</div>-->
-<!--        <div class="task-name" th:text="${task.taskName}">Помыть посуду</div>-->
-<!--        <div class="task-user" th:text="${task.executorName}">Иван</div>-->
-<!--        <button id="btn-finish">Завершить задание</button>-->
-<!--    </div>-->
-
 </body>
 </html>
