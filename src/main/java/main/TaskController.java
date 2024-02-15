@@ -16,7 +16,7 @@ public class TaskController {
     private StorageTasks storageTasks = new StorageTasks();
 
 
-    @GetMapping(value = "/")
+    @GetMapping()
     public String getTasks(Model model) {
         System.out.println("get tasks controller");
         model.addAttribute("task", new Task());
@@ -30,7 +30,7 @@ public class TaskController {
     public String saveTask(Task task) {
         System.out.println("save controller");
         storageTasks.addTask(task);
-        return "redirect:/tasks/";
+        return "redirect:/tasks";
     }
 
 
