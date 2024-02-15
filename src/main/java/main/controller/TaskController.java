@@ -1,5 +1,7 @@
-package main;
+package main.controller;
 
+import main.StorageTasks;
+import main.Task;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
