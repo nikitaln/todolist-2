@@ -21,6 +21,7 @@ public class TaskController {
         System.out.println("get tasks controller");
         model.addAttribute("task", new Task());
         model.addAttribute("tasks", storageTasks.getTasks());
+        model.addAttribute("tasksCount", storageTasks.size());
         return "index";
     }
 
