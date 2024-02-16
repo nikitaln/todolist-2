@@ -40,7 +40,7 @@ public class TaskController {
     public String deleteTask(@RequestParam(name = "btn-remove") int taskIdToRemove) {
         System.out.println("delete controller " + taskIdToRemove);
         if (storageTasks.deleteTask(taskIdToRemove)) {
-            return "redirect:/tasks/";
+            return "redirect:/tasks";
         } else {
             return "index";
         }
