@@ -1,4 +1,6 @@
-package main;
+package main.services;
+
+import main.dto.User;
 
 import java.util.ArrayList;
 import java.util.List;

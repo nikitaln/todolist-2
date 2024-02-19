@@ -1,4 +1,6 @@
-package main;
+package main.services;
+
+import main.dto.Task;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

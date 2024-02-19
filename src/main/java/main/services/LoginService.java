@@ -1,6 +1,6 @@
 package main.services;
 
-import main.User;
+import main.dto.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +13,7 @@ public class LoginService {
 
     public boolean auth(User user) {
         System.out.println("check email and pass");
-        return user.getUserEmail().equals(userEmail) && user.getUserPassword().equals(password);
+        return user.getEmail().equals(userEmail) && user.getPassword().equals(password);
     }
 
 }

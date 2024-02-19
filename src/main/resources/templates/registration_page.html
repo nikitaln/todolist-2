@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="registration-form">
+        <h2>Регистрация нового пользователя</h2>
+        <form method="post" th:action="@{/reg/save}" th:object="${user}">
+            <input class="registration-item" type="text" name="name" placeholder="Имя" value="">
+            <br>
+            <input class="registration-item" type="text" name="surname" placeholder="Фамилия" value="">
+            <br>
+            <input class="registration-item" type="email" name="email" placeholder="Email" value="">
+            <br>
+            <input class="registration-item" type="password" name="password" placeholder="Придумать пароль" value="">
+            <br>
+            <input class="registration-item" type="submit" value="Зарегистрироваться">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 package main.controller;
 
-import main.StorageTasks;
-import main.Task;
+import main.services.StorageTasks;
+import main.dto.Task;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +24,7 @@ public class TaskController {
         model.addAttribute("task", new Task());
         model.addAttribute("tasks", storageTasks.getTasks());
         model.addAttribute("tasksCount", storageTasks.size());
-        return "index";
+        return "main_page";
     }
 
 
@@ -42,7 +42,7 @@ public class TaskController {
         if (storageTasks.deleteTask(taskIdToRemove)) {
             return "redirect:/tasks";
         } else {
-            return "index";
+            return "main_page";
         }
     }
 }
