@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.repositories.TaskRepository;
+import main.repositories.UserRepository;
 import main.services.StorageTasks;
 import main.dto.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class TaskController {
     private TaskRepository taskRepository;
     private StorageTasks storageTasks = new StorageTasks(taskRepository);
 
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping()
     public String getTasks(Model model) {
@@ -27,13 +30,14 @@ public class TaskController {
         model.addAttribute("task", new Task());
         model.addAttribute("tasks", storageTasks.getTasks());
         model.addAttribute("tasksCount", storageTasks.size());
+        model.addAttribute("usersFromDb", userRepository.findAll());
         return "main_page";
     }
 
 
     @PostMapping(value = "/save")
     public String saveTask(Task task) {
-        System.out.println("save controller");
+        System.out.println("save controller task and userId " + task.getUser().getId());
         storageTasks.addTask(task);
         return "redirect:/tasks";
     }

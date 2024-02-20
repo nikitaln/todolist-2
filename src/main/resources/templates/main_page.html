@@ -106,8 +106,12 @@
             <h2>Добавление задачи</h2>
             <label>Название задачи:</label>
             <input type="text" name="taskName" value="">
+
             <label>Исполнитель:</label>
-            <input type="text" name="executorName" value="">
+            <select>
+                <option th:each="user : ${usersFromDb}" th:value="${user}" th:text="${user.name}"></option>
+            </select>
+<!--            <input type="text" name="executorName" value="">-->
             <label>Срок выполнения:</label>
             <input type="text" name="deadline" value="">
             <hr>
@@ -126,6 +130,8 @@
             <th>Крайний срок выполнения</th>
             <th>Кол-во дней</th>
         </tr>
+
+<!--        данные из TaskController где добавляем атрибуты в Model-->
         <tr th:attr="data-id=${task.id}" th:each="task : ${tasks}">
             <td>
                 <div class="task-id" th:text="${task.id}">1</div>
