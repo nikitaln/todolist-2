@@ -1,8 +1,10 @@
 package main.services;
 
 import main.dto.Task;
+import main.repositories.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,20 +13,29 @@ public class StorageTasks {
     private List<Task> tasks = new ArrayList<>();
     private int id = 0;
 
+    private TaskRepository taskRepository;
+
+    @Autowired
+    public StorageTasks(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+
 
     public void addTask(Task task) {
         id = id + 1;
         task.setId(id);
-        LocalDate startDate = LocalDate.now();
+        LocalDateTime startDate = LocalDateTime.now();
         int daysCount = task.getDeadline();
-        LocalDate finishDate = startDate.plusDays(daysCount);
+        LocalDateTime finishDate = startDate.plusDays(daysCount);
 
         System.out.println("start time: " + startDate);
         System.out.println("finish time: " + finishDate);
 
-        task.setStartDate(LocalDate.now());
-        task.setFinishDate(finishDate);
+        task.setStartDateTime(LocalDateTime.now());
+        task.setFinishDateTime(finishDate);
         tasks.add(task);
+
+        taskRepository.save(task);
 
         System.out.println("save to tasks");
     }

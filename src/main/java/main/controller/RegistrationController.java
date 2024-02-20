@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+
 @Controller
 @RequestMapping(value = "reg")
 public class RegistrationController {
@@ -28,6 +30,7 @@ public class RegistrationController {
 
     @PostMapping(value = "/save")
     public String registration(User user) {
+        user.setLocalDateTime(LocalDateTime.now());
         userRepository.save(user);
         System.out.println("user create in DB");
         return "redirect:/todo";

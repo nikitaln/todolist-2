@@ -17,7 +17,7 @@
             transform: translate(-50%, -50%);
         }
 
-        .login-form {
+        .main-block {
             position: absolute;
             left: 50%;
             top: 50%;
@@ -28,24 +28,26 @@
             margin-bottom: 10px;
         }
 
-
-
     </style>
 </head>
 <body>
     <h1>Вход в TODO-List</h1>
-    <form method="get" th:action="@{/reg}">
-        <button type="submit" name="btn-reg">Регистрация</button>
-    </form>
-    <div class="login-form">
-        <h2>Вход пользователя</h2>
-        <form method="post" th:action="@{/todo/login}" th:object="${user}">
-            <input class="login-item" type="email" name="email" placeholder="Ваш email" value="">
-            <br>
-            <input class="login-item" type="password" name="password" placeholder="Ваш пароль" value="">
-            <br>
-            <input class="login-item" type="submit" value="Вход">
-        </form>
+    <div class="main-block">
+        <div class="login-form">
+            <h2>Вход пользователя</h2>
+            <form method="post" th:action="@{/todo/login}" th:object="${user}">
+                <input class="login-item" type="email" name="email" placeholder="Ваш email" value="">
+                <br>
+                <input class="login-item" type="password" name="password" placeholder="Ваш пароль" value="">
+                <br>
+                <input class="login-item" type="submit" value="Вход">
+            </form>
+        </div>
+        <div class="btn-reg">
+            <form method="get" th:action="@{/reg}">
+                <button type="submit" name="btn-reg">Регистрация</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

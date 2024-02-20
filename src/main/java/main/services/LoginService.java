@@ -1,19 +1,43 @@
 package main.services;
 
 import main.dto.User;
+import main.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class LoginService {
 
+    private UserRepository userRepository;
 
-    private String userEmail = "root@ya.ru";
-    private String password = "1234";
+
+    @Autowired
+    public LoginService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 
     public boolean auth(User user) {
+        String email = user.getEmail();
+        String pass = user.getPassword();
+
+        List<User> usersFromDb = getAllUsersFromDb();
+
+        for (int i = 0; i < usersFromDb.size(); i++) {
+            if (usersFromDb.get(i).getEmail().equals(email) && usersFromDb.get(i).getPassword().equals(pass)) {
+                System.out.println("user is exist");
+                return true;
+            }
+        }
         System.out.println("check email and pass");
-        return user.getEmail().equals(userEmail) && user.getPassword().equals(password);
+        return false;
+    }
+
+
+    public  List<User> getAllUsersFromDb() {
+        return userRepository.findAll();
     }
 
 }

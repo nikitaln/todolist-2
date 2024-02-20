@@ -1,16 +1,25 @@
 package main.dto;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String taskName;
-    private String executorName;
-    private LocalDate startDate;
-    private LocalDate finishDate;
-    private int deadline;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+    private LocalDateTime startDateTime;
+    private LocalDateTime finishDateTime;
+    private int deadline;
 
     public int getId() {
         return id;
@@ -28,28 +37,28 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public String getExecutorName() {
-        return executorName;
+    public User getUser() {
+        return user;
     }
 
-    public void setExecutorName(String executorName) {
-        this.executorName = executorName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(LocalDateTime startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
-    public LocalDate getFinishDate() {
-        return finishDate;
+    public LocalDateTime getFinishDateTime() {
+        return finishDateTime;
     }
 
-    public void setFinishDate(LocalDate finishDate) {
-        this.finishDate = finishDate;
+    public void setFinishDateTime(LocalDateTime finishDateTime) {
+        this.finishDateTime = finishDateTime;
     }
 
     public int getDeadline() {
