@@ -74,14 +74,14 @@
         }
 
         .task-start-date {
-            width: 100px;
+            width: 300px;
             background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
         }
 
         .task-finish-date {
-            width: 200px;
+            width: 300px;
             background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
@@ -108,8 +108,8 @@
             <input type="text" name="taskName" value="">
 
             <label>Исполнитель:</label>
-            <select>
-                <option th:each="user : ${usersFromDb}" th:value="${user}" th:text="${user.name}"></option>
+            <select th:field="*{user}">
+                <option th:each="user : ${usersFromDb}" th:value="${user.id}" th:text="${user.name}"></option>
             </select>
 <!--            <input type="text" name="executorName" value="">-->
             <label>Срок выполнения:</label>
@@ -140,13 +140,13 @@
                 <div class="task-name" th:text="${task.taskName}">Помыть посуду</div>
             </td>
             <td>
-                <div class="task-user" th:text="${task.executorName}">Иван</div>
+                <div class="task-user" th:text="${task.user.name}">Иван</div>
             </td>
             <td>
-                <div class="task-start-date" th:text="${task.startDate}">2024-02-14</div>
+                <div class="task-start-date" th:text="${task.startDateTime}">2024-02-14</div>
             </td>
             <td>
-                <div class="task-finish-date" th:text="${task.finishDate}">2024-02-17</div>
+                <div class="task-finish-date" th:text="${task.finishDateTime}">2024-02-17</div>
             </td>
             <td>
                 <div class="task-count-days" th:text="${task.deadline}">3</div>

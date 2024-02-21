@@ -13,13 +13,6 @@ public class StorageTasks {
     private List<Task> tasks = new ArrayList<>();
     private int id = 0;
 
-    private TaskRepository taskRepository;
-
-    @Autowired
-    public StorageTasks(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
-
 
     public void addTask(Task task) {
         id = id + 1;
@@ -35,9 +28,7 @@ public class StorageTasks {
         task.setFinishDateTime(finishDate);
         tasks.add(task);
 
-        taskRepository.save(task);
-
-        System.out.println("save to tasks");
+        System.out.println("save to tasks to storage");
     }
 
 

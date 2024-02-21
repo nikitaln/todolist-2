@@ -12,17 +12,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDateTime;
+
 
 @Controller
 @RequestMapping(value = "tasks")
 public class TaskController {
 
-
-    private TaskRepository taskRepository;
-    private StorageTasks storageTasks = new StorageTasks(taskRepository);
-
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TaskRepository taskRepository;
+
+    private StorageTasks storageTasks = new StorageTasks();
+
+    private int id = 0;
 
     @GetMapping()
     public String getTasks(Model model) {
@@ -37,8 +41,19 @@ public class TaskController {
 
     @PostMapping(value = "/save")
     public String saveTask(Task task) {
-        System.out.println("save controller task and userId " + task.getUser().getId());
+        System.out.println("save controller task and userId " + task.getUser().getId() + " userName " + task.getUser().getName());
         storageTasks.addTask(task);
+
+        id = id + 1;
+        task.setId(id);
+        LocalDateTime startDate = LocalDateTime.now();
+
+        int daysCount = task.getDeadline();
+        LocalDateTime finishDate = startDate.plusDays(daysCount);
+        task.setStartDateTime(LocalDateTime.now());
+        task.setFinishDateTime(finishDate);
+
+        taskRepository.save(task);
         return "redirect:/tasks";
     }
 
