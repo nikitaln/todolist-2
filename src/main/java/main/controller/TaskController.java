@@ -32,7 +32,8 @@ public class TaskController {
     public String getTasks(Model model) {
         System.out.println("get tasks controller");
         model.addAttribute("task", new Task());
-        model.addAttribute("tasks", storageTasks.getTasks());
+//        model.addAttribute("tasks", storageTasks.getTasks());
+        model.addAttribute("tasks", taskRepository.findAll());
         model.addAttribute("tasksCount", storageTasks.size());
         model.addAttribute("usersFromDb", userRepository.findAll());
         return "main_page";
@@ -42,18 +43,20 @@ public class TaskController {
     @PostMapping(value = "/save")
     public String saveTask(Task task) {
         System.out.println("save controller task and userId " + task.getUser().getId() + " userName " + task.getUser().getName());
-        storageTasks.addTask(task);
 
-        id = id + 1;
-        task.setId(id);
+
+//        id = id + 1;
+//        task.setId(id);
         LocalDateTime startDate = LocalDateTime.now();
-
         int daysCount = task.getDeadline();
         LocalDateTime finishDate = startDate.plusDays(daysCount);
         task.setStartDateTime(LocalDateTime.now());
         task.setFinishDateTime(finishDate);
 
         taskRepository.save(task);
+        System.out.println("save to DB");
+        storageTasks.addTask(task);
+        System.out.println("save to List");
         return "redirect:/tasks";
     }
 
