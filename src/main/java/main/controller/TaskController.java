@@ -32,9 +32,8 @@ public class TaskController {
     public String getTasks(Model model) {
         System.out.println("get tasks controller");
         model.addAttribute("task", new Task());
-//        model.addAttribute("tasks", storageTasks.getTasks());
         model.addAttribute("tasks", taskRepository.findAll());
-        model.addAttribute("tasksCount", storageTasks.size());
+        model.addAttribute("tasksCount", taskRepository.count());
         model.addAttribute("usersFromDb", userRepository.findAll());
         return "main_page";
     }
@@ -65,8 +64,17 @@ public class TaskController {
     public String deleteTask(@RequestParam(name = "btn-remove") int taskIdToRemove) {
         System.out.println("delete controller " + taskIdToRemove);
         if (storageTasks.deleteTask(taskIdToRemove)) {
+            //return "redirect:/tasks";
+        } else {
+            //return "main_page";
+        }
+
+        if (taskRepository.existsById(taskIdToRemove)) {
+            taskRepository.deleteById(taskIdToRemove);
+            System.out.println("delete from DB");
             return "redirect:/tasks";
         } else {
+            System.out.println("not exist");
             return "main_page";
         }
     }
