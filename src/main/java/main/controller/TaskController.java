@@ -68,4 +68,18 @@ public class TaskController {
             return "main_page";
         }
     }
+
+
+    public String completeTask(@RequestParam(name = "btn-complete") int taskIdToComplete) {
+        logger.info("POST /complete task");
+        if (taskRepository.existsById(taskIdToComplete)) {
+            taskRepository.deleteById(taskIdToComplete);
+            logger.info("Complete task with ID: " + taskIdToComplete);
+            return "redirect:/tasks";
+
+        } else {
+            return "main_page";
+
+        }
+    }
 }

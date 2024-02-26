@@ -78,14 +78,14 @@
         }
 
         .task-start-date {
-            width: 300px;
+            width: 100px;
             background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
         }
 
         .task-finish-date {
-            width: 300px;
+            width: 100px;
             background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
@@ -98,6 +98,20 @@
             font-family: sans-serif;
         }
 
+        .task-status {
+            width: 70px;
+            background-color: darkseagreen;
+            margin-right: 10px;
+            font-family: sans-serif;
+        }
+
+        #tasks {
+            table-layout: fixed;
+        }
+
+        #tasks th {
+            overflow-wrap: break-word;
+        }
     </style>
 </head>
 <body>
@@ -125,7 +139,7 @@
 
     <h2 name="message">Список задач (<span th:text="${tasksCount}">0</span>)</h2>
 
-    <table id="tasks">
+    <table id="tasks-table">
         <tr>
             <th>ИД</th>
             <th>Название задачи</th>
@@ -133,6 +147,7 @@
             <th>Дата создания</th>
             <th>Крайний срок выполнения</th>
             <th>Кол-во дней</th>
+            <th>Статус</th>
         </tr>
 
 <!--        данные из TaskController где добавляем атрибуты в Model-->
@@ -156,8 +171,16 @@
                 <div class="task-count-days" th:text="${task.deadline}">3</div>
             </td>
             <td>
+                <div class="task-status" th:text="${task.status}">PROCESS</div>
+            </td>
+            <td>
                 <form method="post" th:action="@{/tasks/delete}">
                     <button type="submit" name="btn-remove" th:value="${task.id}">Удалить</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" th:action="@{/tasks/complete}">
+                    <button type="submit" name="btn-complete" th:value="${task.id}">Завершить</button>
                 </form>
             </td>
         </tr>

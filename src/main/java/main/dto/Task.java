@@ -19,6 +19,9 @@ public class Task {
     private LocalDate startDateTask;
     private LocalDate finishDateTask;
     private int deadline;
+    @Column(name = "status", nullable = true)
+    @Enumerated(EnumType.STRING)
+    private StatusType status;
 
 
     public int getId() {
@@ -67,5 +70,13 @@ public class Task {
 
     public void setDeadline(int deadline) {
         this.deadline = deadline;
+    }
+
+    public StatusType getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusType status) {
+        this.status = status;
     }
 }
