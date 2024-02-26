@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.dto.StatusType;
 import main.repositories.TaskRepository;
 import main.repositories.UserRepository;
 import main.dto.Task;
@@ -49,6 +50,7 @@ public class TaskController {
         LocalDate dateNow = LocalDate.now();
         task.setStartDateTask(dateNow);
         task.setFinishDateTask(dateNow.plusDays(task.getDeadline()));
+        task.setStatus(StatusType.PROCESS);
         taskRepository.save(task);
         return "redirect:/tasks";
     }
@@ -70,11 +72,14 @@ public class TaskController {
     }
 
 
+    @PostMapping(value = "/complete")
     public String completeTask(@RequestParam(name = "btn-complete") int taskIdToComplete) {
         logger.info("POST /complete task");
         if (taskRepository.existsById(taskIdToComplete)) {
-            taskRepository.deleteById(taskIdToComplete);
-            logger.info("Complete task with ID: " + taskIdToComplete);
+            Task task = taskRepository.findById(taskIdToComplete).get();
+            task.setStatus(StatusType.COMPLETE);
+            taskRepository.save(task);
+            logger.info("Set status COMPLETE for task with ID: " + taskIdToComplete);
             return "redirect:/tasks";
 
         } else {
