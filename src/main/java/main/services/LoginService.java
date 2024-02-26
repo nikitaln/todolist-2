@@ -11,8 +11,6 @@ import java.util.List;
 public class LoginService {
 
     private UserRepository userRepository;
-
-
     @Autowired
     public LoginService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -27,11 +25,11 @@ public class LoginService {
 
         for (int i = 0; i < usersFromDb.size(); i++) {
             if (usersFromDb.get(i).getEmail().equals(email) && usersFromDb.get(i).getPassword().equals(pass)) {
-                System.out.println("user is exist");
+
                 return true;
             }
         }
-        System.out.println("check email and pass");
+
         return false;
     }
 

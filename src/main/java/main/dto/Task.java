@@ -3,7 +3,6 @@ package main.dto;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
@@ -17,9 +16,10 @@ public class Task {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    private LocalDateTime startDateTime;
-    private LocalDateTime finishDateTime;
+    private LocalDate startDateTask;
+    private LocalDate finishDateTask;
     private int deadline;
+
 
     public int getId() {
         return id;
@@ -45,20 +45,20 @@ public class Task {
         this.user = user;
     }
 
-    public LocalDateTime getStartDateTime() {
-        return startDateTime;
+    public LocalDate getStartDateTask() {
+        return startDateTask;
     }
 
-    public void setStartDateTime(LocalDateTime startDateTime) {
-        this.startDateTime = startDateTime;
+    public void setStartDateTask(LocalDate startDateTask) {
+        this.startDateTask = startDateTask;
     }
 
-    public LocalDateTime getFinishDateTime() {
-        return finishDateTime;
+    public LocalDate getFinishDateTask() {
+        return finishDateTask;
     }
 
-    public void setFinishDateTime(LocalDateTime finishDateTime) {
-        this.finishDateTime = finishDateTime;
+    public void setFinishDateTask(LocalDate finishDateTask) {
+        this.finishDateTask = finishDateTask;
     }
 
     public int getDeadline() {

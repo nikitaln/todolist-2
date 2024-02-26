@@ -3,7 +3,8 @@ package main.dto;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "users")
@@ -16,7 +17,7 @@ public class User {
     private String surname;
     private String email;
     private String password;
-    private LocalDateTime localDateTime;
+    private LocalDate registrationDate;
 
 //    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
 //    private List<Task> tasks = new ArrayList<>();
@@ -62,11 +63,11 @@ public class User {
         this.password = password;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }
