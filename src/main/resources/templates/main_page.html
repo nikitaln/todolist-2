@@ -65,7 +65,7 @@
         }
 
         .task-id {
-
+            width: 30px;
             margin-right: 10px;
             background-color: darkseagreen;
             font-family: sans-serif;
@@ -113,6 +113,17 @@
             font-family: sans-serif;
         }
 
+        td div {
+            height: 30px;
+            border: 1px solid green;
+            border-radius: 5%;
+        }
+
+<!--        th {-->
+<!--            border: 1px solid black;-->
+<!--            border-radius: 7%;-->
+<!--        }-->
+
 
     </style>
 </head>
@@ -147,11 +158,10 @@
             <th>Название задачи</th>
             <th>Исполнитель</th>
             <th>Дата создания</th>
-            <th>Крайний срок выполнения</th>
+            <th>Крайний срок</th>
             <th>Кол-во дней</th>
             <th>Статус</th>
         </tr>
-
 <!--        данные из TaskController где добавляем атрибуты в Model-->
         <tr th:attr="data-id=${task.id}" th:each="task : ${tasks}">
             <td>
