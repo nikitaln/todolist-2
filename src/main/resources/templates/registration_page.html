@@ -23,10 +23,16 @@
             margin-bottom: 10px;
         }
 
+        img {
+            width: 30%;
+            height: 30%;
+        }
+
     </style>
 </head>
 <body>
     <div class="registration-form">
+        <img class="registration-image" th:src="@{/images/user-image.png}" alt="reg image">
         <h2>Регистрация нового пользователя</h2>
         <form method="post" th:action="@{/reg/save}" th:object="${user}">
             <input class="registration-item" type="text" name="name" placeholder="Имя" value="">
