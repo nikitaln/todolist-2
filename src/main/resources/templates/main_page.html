@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ToDo</title>
+
     <style>
 
         html, body {
@@ -29,6 +30,7 @@
         }
 
         .task-form {
+            display: none;
             background-color: darkseagreen;     /* цвет фона данного блока */
             width: 300px;                       /* размер - ширина блока */
             height: 300px;                      /* размер - высота блока */
@@ -46,10 +48,22 @@
             padding: 10px;
         }
 
+
         #btn-show-form {
-            width: 300px;
-            height: 100px;
+            width: 100px;
+            height: 50px;
         }
+
+        #btn-list-users {
+            width: 100px;
+            height: 50px;
+        }
+
+        #btn-list-remove-tasks {
+            width: 100px;
+            height: 50px;
+        }
+
 
         .task-list {
             display: flex;
@@ -124,13 +138,19 @@
 <!--            border-radius: 7%;-->
 <!--        }-->
 
-
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/main_page.js"></script>
 </head>
 <body>
 
     <h1>Новый TODO-List</h1>
-    <button id="btn-show-form">Добавить новую задачу</button>
+    <div class="btn-block">
+        <button id="btn-show-form">Добавить новую задачу</button>
+        <button id="btn-list-users">Список участников</button>
+        <button id="btn-list-remove-tasks">Удаленные задачи</button>
+    </div>
+
 
     <div class="task-form">
         <form method="post" th:action="@{/tasks/save}" th:object="${task}">
