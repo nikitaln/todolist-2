@@ -39,6 +39,9 @@ public class TaskController {
         model.addAttribute("tasks", taskRepository.findAll());
         model.addAttribute("tasksCount", taskRepository.count());
         model.addAttribute("usersFromDb", userRepository.findAll());
+
+        model.addAttribute("usersCount", userRepository.count());
+        model.addAttribute("users", userRepository.findAll());
         return "main_page";
     }
 

@@ -48,26 +48,40 @@
             padding: 10px;
         }
 
-
-        #btn-show-form {
-            width: 100px;
-            height: 50px;
+        .btn-block button {
+            border: 1px solid grey;
+            border-radius: 5%;
+            width: 200px;
+            height: 100px;
+            margin-bottom: 10px;
         }
-
-        #btn-list-users {
-            width: 100px;
-            height: 50px;
-        }
-
-        #btn-list-remove-tasks {
-            width: 100px;
-            height: 50px;
-        }
-
-
-        .task-list {
+================================================
+        .main-list-tasks {
             display: flex;
+            flex-direction: column;         //все элементы внутри данного контейнера будут располагаться в колонку
+            border: 1px solid grey;
+            margin-top: 10px;
+        }
+
+        .main-list-tasks .count-tasks {
+            border: 1px solid grey;
+            margin-bottom: 10px;
+
+<!--            h2 {-->
+<!--                text-align: center;     //текст внутри контейнера по центру-->
+<!--            }-->
+        }
+
+        .main-list-tasks .table-tasks {
+            border: 1px solid grey;
+        }
+
+        .list-all-users {
+            display: none;
             flex-wrap: nowrap;
+            border: 1px solid grey;
+            margin-top: 10px;
+
         }
 
         #tasks {
@@ -81,48 +95,37 @@
         .task-id {
             width: 30px;
             margin-right: 10px;
-            background-color: darkseagreen;
             font-family: sans-serif;
         }
 
         .task-name {
-
             margin-right: 10px;
-            background-color: darkseagreen;
             font-family: sans-serif;
         }
 
         .task-user {
-
-            background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
+
         }
 
         .task-start-date {
-
-            background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
         }
 
         .task-finish-date {
-
-            background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
         }
 
-        .task-count-days {
 
-            background-color: darkseagreen;
+        .task-count-days {
             margin-right: 10px;
             font-family: sans-serif;
         }
 
         .task-status {
-
-            background-color: darkseagreen;
             margin-right: 10px;
             font-family: sans-serif;
         }
@@ -133,10 +136,7 @@
             border-radius: 5%;
         }
 
-<!--        th {-->
-<!--            border: 1px solid black;-->
-<!--            border-radius: 7%;-->
-<!--        }-->
+
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -146,8 +146,9 @@
 
     <h1>Новый TODO-List</h1>
     <div class="btn-block">
+        <button id="btn-list-tasks">Полный Список задач</button>
         <button id="btn-show-form">Добавить новую задачу</button>
-        <button id="btn-list-users">Список участников</button>
+        <button id="btn-show-users">Список пользователей</button>
         <button id="btn-list-remove-tasks">Удаленные задачи</button>
     </div>
 
@@ -170,52 +171,98 @@
         </form>
     </div>
 
-    <h2 name="message">Список задач (<span th:text="${tasksCount}">0</span>)</h2>
 
-    <table id="tasks-table">
-        <tr>
-            <th>ИД</th>
-            <th>Название задачи</th>
-            <th>Исполнитель</th>
-            <th>Дата создания</th>
-            <th>Крайний срок</th>
-            <th>Кол-во дней</th>
-            <th>Статус</th>
-        </tr>
-<!--        данные из TaskController где добавляем атрибуты в Model-->
-        <tr th:attr="data-id=${task.id}" th:each="task : ${tasks}">
-            <td>
-                <div class="task-id" th:text="${task.id}">1</div>
-            </td>
-            <td>
-                <div class="task-name" th:text="${task.taskName}">Помыть посуду</div>
-            </td>
-            <td>
-                <div class="task-user" th:text="${task.user.name}">Иван</div>
-            </td>
-            <td>
-                <div class="task-start-date" th:text="${task.startDateTask}">2024-02-14</div>
-            </td>
-            <td>
-                <div class="task-finish-date" th:text="${task.finishDateTask}">2024-02-17</div>
-            </td>
-            <td>
-                <div class="task-count-days" th:text="${task.deadline}">3</div>
-            </td>
-            <td>
-                <div class="task-status" th:text="${task.status}">PROCESS</div>
-            </td>
-            <td>
-                <form method="post" th:action="@{/tasks/delete}">
-                    <button type="submit" name="btn-remove" th:value="${task.id}">Удалить</button>
-                </form>
-            </td>
-            <td>
-                <form method="post" th:action="@{/tasks/complete}">
-                    <button type="submit" name="btn-complete" th:value="${task.id}">Завершить</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+    <div class="main-list-tasks">
+        <div class="count-tasks">
+            <h2 name="message">Список задач (<span th:text="${tasksCount}">0</span>)</h2>
+        </div>
+        <div class="table-tasks">
+            <table id="tasks">
+                <tr>
+                    <th>ИД</th>
+                    <th>Название задачи</th>
+                    <th>Исполнитель</th>
+                    <th>Дата создания</th>
+                    <th>Крайний срок</th>
+                    <th>Кол-во дней</th>
+                    <th>Статус</th>
+                </tr>
+                <!--        данные из TaskController где добавляем атрибуты в Model-->
+                <tr th:attr="data-id=${task.id}" th:each="task : ${tasks}">
+                    <td>
+                        <div class="task-id" th:text="${task.id}">1</div>
+                    </td>
+                    <td>
+                        <div class="task-name" th:text="${task.taskName}">Помыть посуду</div>
+                    </td>
+                    <td>
+                        <div class="task-user" th:text="${task.user.name}">Иван</div>
+                    </td>
+                    <td>
+                        <div class="task-start-date" th:text="${task.startDateTask}">2024-02-14</div>
+                    </td>
+                    <td>
+                        <div class="task-finish-date" th:text="${task.finishDateTask}">2024-02-17</div>
+                    </td>
+                    <td>
+                        <div class="task-count-days" th:text="${task.deadline}">3</div>
+                    </td>
+                    <td>
+                        <div class="task-status" th:text="${task.status}">PROCESS</div>
+                    </td>
+                    <td>
+                        <form method="post" th:action="@{/tasks/delete}">
+                            <button type="submit" name="btn-remove" th:value="${task.id}">Удалить</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" th:action="@{/tasks/complete}">
+                            <button type="submit" name="btn-complete" th:value="${task.id}">Завершить</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="list-all-users">
+        <h2 name="users">Список пользователей (<span th:text="${usersCount}">0</span>)</h2>
+        <table id="users-table">
+            <tr>
+                <th>ИД</th>
+                <th>Пользователь</th>
+                <th>Email</th>
+                <th>Кол-во выполненных задач</th>
+            </tr>
+            <!--        данные из TaskController где добавляем атрибуты в Model-->
+            <tr th:attr="data-id=${user.id}" th:each="user : ${users}">
+                <td>
+                    <div class="user-id" th:text="${user.id}">1</div>
+                </td>
+                <td>
+                    <div class="user-name" th:text="${user.name}">Иван</div>
+                </td>
+                <td>
+                    <div class="user-email" th:text="${user.email}">ivan@mail.ru</div>
+                </td>
+<!--                <td>-->
+<!--                    <form method="post" th:action="@{/tasks/delete}">-->
+<!--                        <button type="submit" name="btn-remove" th:value="${task.id}">Удалить</button>-->
+<!--                    </form>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <form method="post" th:action="@{/tasks/complete}">-->
+<!--                        <button type="submit" name="btn-complete" th:value="${task.id}">Завершить</button>-->
+<!--                    </form>-->
+<!--                </td>-->
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="list-remove-tasks">
+
+    </div>
 </body>
 </html>
