@@ -1,0 +1,62 @@
+        html, body {
+            height: 100%;               /* растягиваем фон на всю страницу */
+            font-family: sans-serif;    /* новый шрифт без засечек */
+            font-size: 18px;            /* размер шрифта на всей странице */
+            background-color: #ABD3BF;  /* зеленый для фона */
+        }
+
+        h1 {
+            /* text-align: center; */
+            font-family: cursive;
+            color: white;
+            font-size: 52px;
+            -webkit-text-stroke: 2px green;
+        }
+
+
+        .btn-block button {
+            border-radius: 5%;
+            width: 200px;
+            height: 80px;
+            margin-bottom: 10px;
+            border: 0px;
+
+            background-color: #49926E; /* зеленый для кнопок */
+            color: white;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+
+        .list-all-users {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .title-users {
+            border: 1px solid grey;
+        }
+
+        .block-table-users {
+            margin-top: 10px;
+            border: 1px solid grey;
+        }
+
+        .user-id {
+            width: 30px;
+            margin-right: 10px;
+            border: 1px solid grey;
+        }
+
+        .user-name {
+            width: 100px;
+            margin-right: 10px;
+            border: 1px solid grey;
+        }
+
+        .user-email {
+            width: 100px;
+            margin-right: 10px;
+            border: 1px solid grey;
+        }

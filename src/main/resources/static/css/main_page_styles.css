@@ -1,7 +1,16 @@
         html, body {
             height: 100%;               /* растягиваем фон на всю страницу */
             font-family: sans-serif;    /* новый шрифт без засечек */
-            font-size: 14px;            /* размер шрифта на всей странице */
+            font-size: 18px;            /* размер шрифта на всей странице */
+            background-color: #ABD3BF;  /* зеленый для фона */
+        }
+
+        h1 {
+            /* text-align: center; */
+            font-family: cursive;
+            color: white;
+            font-size: 52px;
+            -webkit-text-stroke: 2px green;
         }
 
         .task-form form input {
@@ -23,13 +32,12 @@
 
         .task-form {
             display: none;
-            background-color: darkseagreen;     /* цвет фона данного блока */
+            background-color: #49926E;     /* цвет фона данного блока */
             width: 300px;                       /* размер - ширина блока */
             height: 300px;                      /* размер - высота блока */
             margin-bottom: 10px;                /* отступ от нижнего блока */
             margin-top: 10px;                   /* отступ от верхнего блока */
-            border: 1px solid grey;             /* создание границы вокруг блока в 1px серого цвета */
-            font-family: sans-serif;
+            border: 0px;             /* создание границы вокруг блока в 1px серого цвета */
         }
 
         .task-form form {
@@ -41,13 +49,30 @@
         }
 
         .btn-block button {
-            border: 1px solid grey;
             border-radius: 5%;
             width: 200px;
-            height: 100px;
-            margin-bottom: 10px;
+            height: 80px;
+            margin-bottom: 30px;
+            border: 0px;
+
+            background-color: #49926E; /* зеленый для кнопок */
+            color: white;
+            font-family: monospace;
+            font-size: 16px;
         }
-================================================
+
+        .btn-manage #btn-show-form {
+            border-radius: 5%;
+            width: 200px;
+            height: 60px;
+            margin-bottom: 10px;
+
+            background-color: #49926E; /* зеленый для кнопок */
+            color: white;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
         .main-list-tasks {
             display: flex;
             flex-direction: column;         //все элементы внутри данного контейнера будут располагаться в колонку
@@ -68,14 +93,6 @@
             border: 1px solid grey;
         }
 
-        .list-all-users {
-            display: none;
-            flex-wrap: nowrap;
-            border: 1px solid grey;
-            margin-top: 10px;
-
-        }
-
         #tasks {
             table-layout: fixed;
         }
@@ -87,39 +104,31 @@
         .task-id {
             width: 30px;
             margin-right: 10px;
-            font-family: sans-serif;
         }
 
         .task-name {
             margin-right: 10px;
-            font-family: sans-serif;
         }
 
         .task-user {
             margin-right: 10px;
-            font-family: sans-serif;
-
         }
 
         .task-start-date {
             margin-right: 10px;
-            font-family: sans-serif;
         }
 
         .task-finish-date {
             margin-right: 10px;
-            font-family: sans-serif;
         }
 
 
         .task-count-days {
             margin-right: 10px;
-            font-family: sans-serif;
         }
 
         .task-status {
             margin-right: 10px;
-            font-family: sans-serif;
         }
 
         td div {
