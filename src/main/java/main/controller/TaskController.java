@@ -1,9 +1,12 @@
 package main.controller;
 
+import main.dto.Statistics;
 import main.dto.StatusType;
+import main.repositories.StatisticsRepository;
 import main.repositories.TaskRepository;
 import main.repositories.UserRepository;
 import main.dto.Task;
+import main.services.StatisticsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,10 @@ public class TaskController {
     private UserRepository userRepository;
     @Autowired
     private TaskRepository taskRepository;
+    @Autowired
+    private StatisticsRepository statisticsRepository;
+    @Autowired
+    StatisticsService statisticsService;
 
     private final Logger logger = LogManager.getLogger(TaskController.class);
 
@@ -52,6 +59,7 @@ public class TaskController {
         task.setFinishDateTask(dateNow.plusDays(task.getDeadline()));
         task.setStatus(StatusType.PROCESS);
         taskRepository.save(task);
+
         return "redirect:/tasks";
     }
 
