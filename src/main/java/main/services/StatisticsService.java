@@ -3,6 +3,7 @@ package main.services;
 import main.dto.Statistics;
 import main.dto.Task;
 import main.repositories.StatisticsRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,10 +26,11 @@ public class StatisticsService {
     public void addTaskInProcess(Task task) {
         System.out.println("Вход, статистика");
         int userId = task.getUser().getId();
+        System.out.println("0");
 
         //счетчик
         try {
-
+            System.out.println("1");
             int statisticsId = statisticsRepository.getStatisticsId(userId);    // потенциальное исключение
             Statistics statistics = statisticsRepository.findById(statisticsId).get();
             Integer countTasksInProcess = statisticsRepository.findById(statisticsId).get().getCountInProcessTasks();
