@@ -28,7 +28,6 @@ public class UserController {
         model.addAttribute("usersFromDb", userRepository.findAll());
         model.addAttribute("usersCount", userRepository.count());
         model.addAttribute("users", userRepository.findAll());
-        System.out.println("WORKING FINISH");
         return "users_page";
     }
 }

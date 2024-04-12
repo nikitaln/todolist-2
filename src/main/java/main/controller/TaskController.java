@@ -59,6 +59,7 @@ public class TaskController {
         task.setFinishDateTask(dateNow.plusDays(task.getDeadline()));
         task.setStatus(StatusType.PROCESS);
         taskRepository.save(task);
+        statisticsService.addTaskInProcess(task);
 
         return "redirect:/tasks";
     }
