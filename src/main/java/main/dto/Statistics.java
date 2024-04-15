@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Statistics {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -21,13 +21,13 @@ public class Statistics {
     private int countInProcessTasks;
 
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public User getUser() {
         return user;

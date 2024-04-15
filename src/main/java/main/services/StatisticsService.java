@@ -1,51 +1,59 @@
 package main.services;
 
+import main.controller.TaskController;
 import main.dto.Statistics;
 import main.dto.Task;
+import main.dto.User;
 import main.repositories.StatisticsRepository;
-import org.springframework.data.repository.query.Param;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StatisticsService {
 
     StatisticsRepository statisticsRepository;
+    private final Logger logger = LogManager.getLogger(StatisticsService.class);
+
 
     public StatisticsService(StatisticsRepository statisticsRepository) {
         this.statisticsRepository = statisticsRepository;
     }
 
+
+    public Statistics createNewStatistics(User user) {
+        logger.info("create new statistics for new user");
+
+        Statistics statistics = new Statistics();
+        statistics.setUser(user);
+        statistics.setCountCompletedTasks(0);
+        statistics.setCountDeletedTasks(0);
+        statistics.setCountInProcessTasks(0);
+        statisticsRepository.save(statistics);
+        return statistics;
+    }
+
+
     public void addCompletedTask(Task task) {
+        logger.info("task is completed");
 
     }
+
 
     public void addDeletedTask() {
 
     }
 
+
     public void addTaskInProcess(Task task) {
-        System.out.println("Вход, статистика");
+        logger.info("save new task for user");
+
         int userId = task.getUser().getId();
-        System.out.println("0");
-
-        //счетчик
-        try {
-            System.out.println("1");
-            int statisticsId = statisticsRepository.getStatisticsId(userId);    // потенциальное исключение
-            Statistics statistics = statisticsRepository.findById(statisticsId).get();
-            Integer countTasksInProcess = statisticsRepository.findById(statisticsId).get().getCountInProcessTasks();
-            countTasksInProcess = countTasksInProcess + 1;
-            statistics.setCountInProcessTasks(countTasksInProcess);
-            statisticsRepository.save(statistics);
-            System.out.println("Успех без исключения");
-
-        } catch (Exception e){
-            System.out.println("Исключение");
-            Statistics statistics = new Statistics();
-            statistics.setCountInProcessTasks(1);
-            statistics.setUser(task.getUser());
-            statisticsRepository.save(statistics);
-            System.out.println("Успех исключения");
-        }
+        int statisticsId = statisticsRepository.getStatisticsId(userId);
+        Statistics statistics = statisticsRepository.findById(statisticsId).get();
+        Integer countTasksInProcess = statisticsRepository.findById(statisticsId).get().getCountInProcessTasks();
+        countTasksInProcess = countTasksInProcess + 1;
+        statistics.setCountInProcessTasks(countTasksInProcess);
+        statisticsRepository.save(statistics);
     }
 }

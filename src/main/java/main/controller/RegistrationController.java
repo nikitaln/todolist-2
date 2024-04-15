@@ -1,8 +1,11 @@
 package main.controller;
 
 
+import main.dto.Statistics;
 import main.dto.User;
+import main.repositories.StatisticsRepository;
 import main.repositories.UserRepository;
+import main.services.StatisticsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +21,17 @@ import java.time.LocalDate;
 @RequestMapping(value = "reg")
 public class RegistrationController {
 
+
     UserRepository userRepository;
+    StatisticsService statisticsService;
+
     private final Logger logger = LogManager.getLogger(RegistrationController.class);
+
+
     @Autowired
-    public RegistrationController(UserRepository userRepository) {
+    public RegistrationController(UserRepository userRepository, StatisticsService statisticsService) {
         this.userRepository = userRepository;
+        this.statisticsService = statisticsService;
     }
 
 
@@ -39,6 +48,8 @@ public class RegistrationController {
         logger.info("POST /save create user and save to database");
 
         user.setRegistrationDate(LocalDate.now());
+        Statistics statistics = statisticsService.createNewStatistics(user);
+        user.setStatistics(statistics);
         userRepository.save(user);
         return "redirect:/todo";
     }

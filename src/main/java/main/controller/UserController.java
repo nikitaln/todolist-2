@@ -28,6 +28,7 @@ public class UserController {
         model.addAttribute("usersFromDb", userRepository.findAll());
         model.addAttribute("usersCount", userRepository.count());
         model.addAttribute("users", userRepository.findAll());
+
         return "users_page";
     }
 }

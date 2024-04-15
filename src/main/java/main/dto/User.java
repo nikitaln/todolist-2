@@ -18,6 +18,9 @@ public class User {
     private String email;
     private String password;
     private LocalDate registrationDate;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "statistics_id", referencedColumnName = "id")
+    private Statistics statistics;
 
 //    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
 //    private List<Task> tasks = new ArrayList<>();
@@ -69,5 +72,13 @@ public class User {
 
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public Statistics getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(Statistics statistics) {
+        this.statistics = statistics;
     }
 }

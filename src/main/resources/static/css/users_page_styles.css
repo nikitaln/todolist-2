@@ -56,6 +56,12 @@
         }
 
         .user-email {
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid grey;
+        }
+
+        .user-tasks-process {
             width: 100px;
             margin-right: 10px;
             border: 1px solid grey;
