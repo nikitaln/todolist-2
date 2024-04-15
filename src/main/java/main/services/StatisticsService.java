@@ -1,6 +1,6 @@
 package main.services;
 
-import main.controller.TaskController;
+
 import main.dto.Statistics;
 import main.dto.Task;
 import main.dto.User;
@@ -37,6 +37,14 @@ public class StatisticsService {
     public void addCompletedTask(Task task) {
         logger.info("task is completed");
 
+        int userId = task.getUser().getId();
+        int statisticsId = statisticsRepository.getStatisticsId(userId);
+        Statistics statistics = statisticsRepository.findById(statisticsId).get();
+        int tasksInProcess = statistics.getCountInProcessTasks() - 1;
+        statistics.setCountInProcessTasks(tasksInProcess);
+        int tasksCompleted = statistics.getCountCompletedTasks() + 1;
+        statistics.setCountCompletedTasks(tasksCompleted);
+        statisticsRepository.save(statistics);
     }
 
 

@@ -89,6 +89,9 @@ public class TaskController {
             task.setStatus(StatusType.COMPLETE);
             taskRepository.save(task);
             logger.info("Set status COMPLETE for task with ID: " + taskIdToComplete);
+
+            statisticsService.addCompletedTask(task);
+
             return "redirect:/tasks";
 
         } else {

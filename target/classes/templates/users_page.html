@@ -26,7 +26,8 @@
                     <th>ИД</th>
                     <th>Пользователь</th>
                     <th>Email</th>
-                    <th>Кол-во задач в процессе</th>
+                    <th>Кол-во задач в работе</th>
+                    <th>Кол-во выполненных</th>
                 </tr>
                 <!--        данные из TaskController где добавляем атрибуты в Model-->
                 <tr th:attr="data-id=${user.id}" th:each="user : ${users}">
@@ -41,6 +42,9 @@
                     </td>
                     <td>
                         <div class="user-tasks-process" th:text="${user.statistics.countInProcessTasks}">2</div>
+                    </td>
+                    <td>
+                        <div class="user-tasks-completed" th:text="${user.statistics.countCompletedTasks}">1</div>
                     </td>
                 </tr>
             </table>

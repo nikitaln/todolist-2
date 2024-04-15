@@ -64,5 +64,11 @@
         .user-tasks-process {
             width: 100px;
             margin-right: 10px;
-            border: 1px solid grey;            
+            border: 1px solid grey;
+        }
+
+        .user-tasks-completed {
+            width: 100px;
+            margin-right: 10px;
+            border: 1px solid grey;
         }
