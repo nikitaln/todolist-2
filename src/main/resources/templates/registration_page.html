@@ -34,7 +34,7 @@
     <div class="registration-form">
         <img class="registration-image" th:src="@{/images/user-image.png}" alt="reg image">
         <h2>Регистрация нового пользователя</h2>
-        <form method="post" th:action="@{/reg/save}" th:object="${user}">
+        <form method="post" th:action="@{/reg/save}" enctype="multipart/form-data" th:object="${user}">
             <input class="registration-item" type="text" name="name" placeholder="Имя" value="">
             <br>
             <input class="registration-item" type="text" name="surname" placeholder="Фамилия" value="">
@@ -43,14 +43,16 @@
             <br>
             <input class="registration-item" type="password" name="password" placeholder="Придумать пароль" value="">
             <br>
+            <input class="image-person" type="file" name="file">
+            <br>
             <input class="registration-item" type="submit" value="Зарегистрироваться">
         </form>
 
-        <form method="post" th:action="@{reg/upload}" enctype="multipart/form-data">
-            <input class="image-person" type="file" name="file">
-            <br>
-            <input class="registration-item" type="submit" value="Добавить фото">
-        </form>
+<!--        <form method="post" th:action="@{reg/upload}" enctype="multipart/form-data">-->
+<!--            <input class="image-person" type="file" name="file">-->
+<!--            <br>-->
+<!--            <input class="registration-item" type="submit" value="Добавить фото">-->
+<!--        </form>-->
     </div>
 </body>
 </html>
