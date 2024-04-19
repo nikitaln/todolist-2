@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class StatisticsService {
 
     StatisticsRepository statisticsRepository;
-    private final Logger logger = LogManager.getLogger(StatisticsService.class);
 
+    private final Logger logger = LogManager.getLogger(StatisticsService.class);
 
     public StatisticsService(StatisticsRepository statisticsRepository) {
         this.statisticsRepository = statisticsRepository;

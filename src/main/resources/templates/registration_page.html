@@ -45,6 +45,12 @@
             <br>
             <input class="registration-item" type="submit" value="Зарегистрироваться">
         </form>
+
+        <form method="post" th:action="@{reg/upload}" enctype="multipart/form-data">
+            <input class="image-person" type="file" name="file">
+            <br>
+            <input class="registration-item" type="submit" value="Добавить фото">
+        </form>
     </div>
 </body>
 </html>

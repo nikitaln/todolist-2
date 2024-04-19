@@ -31,6 +31,7 @@ public class LoginController {
         logger.info("POST /login authentication");
 
         if (loginService.auth(user)) {
+
             return "redirect:/tasks";
         }
         return "login_page";

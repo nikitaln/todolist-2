@@ -22,6 +22,7 @@ public class User {
     @JoinColumn(name = "statistics_id", referencedColumnName = "id")
     private Statistics statistics;
 
+
 //    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
 //    private List<Task> tasks = new ArrayList<>();
 

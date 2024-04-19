@@ -13,6 +13,23 @@
             -webkit-text-stroke: 2px green;
         }
 
+        .user-block {
+            border: 1px solid grey;
+            height: 100px;
+        }
+
+        .user-image {
+            border: 1px solid red;
+            height: 100px;
+            width: 100px;
+        }
+
+        .user-full-name {
+            border: 1px solid green;
+            height: 100px;
+            width: 200px;
+        }
+
 
         .btn-block button {
             border-radius: 5%;
