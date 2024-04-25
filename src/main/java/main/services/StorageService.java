@@ -18,7 +18,7 @@ public class StorageService {
     @Value("${upload.path}")   //значение из application.properties
     String uploadPath;
 
-    public String savePersonalImage(User user, MultipartFile file) throws IOException {
+    public String savePersonalImage(MultipartFile file) throws IOException {
 
         String resourceURI = null;
         System.out.println("Путь к папке - " + uploadPath);
@@ -40,11 +40,11 @@ public class StorageService {
 
             file.transferTo(path);
 
-            File oldFileName = new File(path.toString());
-            String newFilePathWithUserName = uploadPath + "\\" + user.getSurname() + "_" + user.getName() + ".jpg";
-            System.out.println(newFilePathWithUserName);
-            File newFileName = new File(newFilePathWithUserName);
-            oldFileName.renameTo(newFileName);
+//            File oldFileName = new File(path.toString());
+//            String newFilePathWithUserName = uploadPath + "\\" + user.getSurname() + "_" + user.getName() + ".jpg";
+//            System.out.println(newFilePathWithUserName);
+//            File newFileName = new File(newFilePathWithUserName);
+//            oldFileName.renameTo(newFileName);
 
         }
 
