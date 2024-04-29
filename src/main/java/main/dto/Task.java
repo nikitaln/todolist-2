@@ -11,16 +11,23 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String taskName;
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
     private LocalDate startDateTask;
+
     private LocalDate finishDateTask;
+
     private int deadline;
     @Column(name = "status", nullable = true)
     @Enumerated(EnumType.STRING)
+
     private StatusType status;
+
 
 
     public int getId() {
@@ -78,4 +85,5 @@ public class Task {
     public void setStatus(StatusType status) {
         this.status = status;
     }
+
 }

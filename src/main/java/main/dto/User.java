@@ -21,6 +21,7 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "statistics_id", referencedColumnName = "id")
     private Statistics statistics;
+    private String image;
 
 
 //    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
@@ -82,4 +83,13 @@ public class User {
     public void setStatistics(Statistics statistics) {
         this.statistics = statistics;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
+

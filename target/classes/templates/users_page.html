@@ -32,6 +32,7 @@
             <table id="users-table">
                 <tr>
                     <th>ИД</th>
+                    <th>Фото</th>
                     <th>Пользователь</th>
                     <th>Email</th>
                     <th>Кол-во задач в работе</th>
@@ -41,6 +42,11 @@
                 <tr th:attr="data-id=${user.id}" th:each="user : ${users}">
                     <td>
                         <div class="user-id" th:text="${user.id}">1</div>
+                    </td>
+                    <td>
+                        <div class="user-photo" >
+                            <img th:src="${user.image}" alt="user-img">
+                        </div>
                     </td>
                     <td>
                         <div class="user-name" th:text="${user.name}">Иван</div>

@@ -15,13 +15,20 @@ import java.nio.file.Paths;
 @Service
 public class StorageService {
 
-    @Value("${upload.path}")   //значение из application.properties
+    @Value("${upload.path}")   //значение из application.properties (место сохранения картинки)
     String uploadPath;
 
-    public String savePersonalImage(MultipartFile file) throws IOException {
+
+
+    public String savePersonalImage(User user, MultipartFile file) throws IOException {
 
         String resourceURI = null;
+        String newFilename = String.valueOf(user.getId()) + "_" + user.getSurname() + "_" + user.getName(); // 1_Луканин_Никита.jpg
+
         System.out.println("Путь к папке - " + uploadPath);
+        System.out.println("имя файла - " + file.getName());
+        System.out.println("имя файла оригинал - " + file.getOriginalFilename());
+
 
         if (!file.isEmpty()) {
             if (!new File(uploadPath).exists()) {
@@ -29,25 +36,25 @@ public class StorageService {
                 System.out.println("Создали папку " + uploadPath);
             }
 
-            String filename = file.getOriginalFilename();
-            System.out.println("filename - " + filename);
+            String fileFormat = FilenameUtils.getExtension(file.getOriginalFilename()); //формат - расширение
 
-            Path path = Paths.get(uploadPath, filename);
-            System.out.println("path " + path.toString());
-
-            resourceURI = filename;
-            System.out.println("resourceURI " + resourceURI);
+            Path path = Paths.get(uploadPath,file.getOriginalFilename());
 
             file.transferTo(path);
 
-//            File oldFileName = new File(path.toString());
-//            String newFilePathWithUserName = uploadPath + "\\" + user.getSurname() + "_" + user.getName() + ".jpg";
-//            System.out.println(newFilePathWithUserName);
-//            File newFileName = new File(newFilePathWithUserName);
-//            oldFileName.renameTo(newFileName);
+            File oldFile = new File(path.toString());
+            File newFile = new File(uploadPath + "\\" + newFilename + "." + fileFormat);
+            oldFile.renameTo(newFile);
+
+            resourceURI = "\\todolist-img\\" + newFile.getName();
+            System.out.println("новый путь = " + newFile.getPath());
+
+            System.out.println("resourceURI - " + resourceURI);
+            System.out.println("path - " + path);
+
 
         }
 
-        return "";
+        return resourceURI;
     }
 }

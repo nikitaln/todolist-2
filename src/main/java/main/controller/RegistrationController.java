@@ -48,24 +48,21 @@ public class RegistrationController {
 
 
     @PostMapping(value = "/save")
-    public String registration(User user, @RequestParam("file") MultipartFile[] file) throws IOException {
+    public String registration(User user, @RequestParam("file") MultipartFile file) throws IOException {
         logger.info("POST /save create user and save to database");
         user.setRegistrationDate(LocalDate.now());
         Statistics statistics = statisticsService.createNewStatistics(user);
         user.setStatistics(statistics);
-        userRepository.save(user);
 
-        for (int i = 0; i < file.length; i++) {
-            System.out.println(file[i].getSize());
-            storageService.savePersonalImage(file[i]);
+
+        try {
+            String pathImage = storageService.savePersonalImage(user, file);
+            user.setImage(pathImage);
+            userRepository.save(user);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-//        System.out.println("Файл - " + file.getOriginalFilename() + ", размер - " + file.getSize());
-//        try {
-//            storageService.savePersonalImage(user, file);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
 
         return "redirect:/todo";
     }
