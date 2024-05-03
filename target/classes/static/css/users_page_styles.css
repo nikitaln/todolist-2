@@ -89,3 +89,8 @@
             margin-right: 10px;
             border: 1px solid grey;
         }
+
+        img {
+            width: 30px;
+            height: 40px;
+        }
