@@ -52,36 +52,36 @@
         <div class="table-tasks">
             <table id="tasks">
                 <tr>
-                    <th>ИД</th>
-                    <th>Название задачи</th>
-                    <th>Исполнитель</th>
-                    <th>Дата создания</th>
-                    <th>Крайний срок</th>
-                    <th>Кол-во дней</th>
-                    <th>Статус</th>
+                    <th id="th-id-task">ИД</th>
+                    <th id="th-name-task">Название задачи</th>
+                    <th id="th-name-user">Исполнитель</th>
+                    <th id="th-date-task">Дата создания</th>
+                    <th id="th-deadline">Крайний срок</th>
+                    <th id="th-days">Кол-во дней</th>
+                    <th id="th-status">Статус</th>
                 </tr>
                 <!--        данные из TaskController где добавляем атрибуты в Model-->
                 <tr th:attr="data-id=${task.id}" th:each="task : ${tasks}">
                     <td>
-                        <div class="task-id" th:text="${task.id}">1</div>
+                        <div class="td-task-data" id="task-id" th:text="${task.id}">1</div>
                     </td>
                     <td>
-                        <div class="task-name" th:text="${task.taskName}">Помыть посуду</div>
+                        <div class="td-task-data" id="task-name" th:text="${task.taskName}">Помыть посуду</div>
                     </td>
                     <td>
-                        <div class="task-user" th:text="${task.user.name}">Иван</div>
+                        <div class="td-task-data" id="task-user" th:text="${task.user.name}">Иван</div>
                     </td>
                     <td>
-                        <div class="task-start-date" th:text="${task.startDateTask}">2024-02-14</div>
+                        <div class="td-task-data" id="task-start-date" th:text="${task.startDateTask}">2024-02-14</div>
                     </td>
                     <td>
-                        <div class="task-finish-date" th:text="${task.finishDateTask}">2024-02-17</div>
+                        <div class="td-task-data" id="task-finish-date" th:text="${task.finishDateTask}">2024-02-17</div>
                     </td>
                     <td>
-                        <div class="task-count-days" th:text="${task.deadline}">3</div>
+                        <div class="td-task-data" id="task-count-days" th:text="${task.deadline}">3</div>
                     </td>
                     <td>
-                        <div class="task-status" th:text="${task.status}">PROCESS</div>
+                        <div class="td-task-data" id="task-status" th:text="${task.status}">PROCESS</div>
                     </td>
                     <td>
                         <form method="post" th:action="@{/tasks/delete}">

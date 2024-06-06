@@ -57,7 +57,6 @@
 
         .block-table-users {
             margin-top: 10px;
-            border: 1px solid grey;
         }
 
         tr {
@@ -105,7 +104,7 @@
         }
 
         td #user-photo {
-            background-color: none;
+            background-color: white;
         }
 
 

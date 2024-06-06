@@ -20,7 +20,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         System.out.println("hello from MVC");
-
-        registry.addResourceHandler("/todolist-img/**").addResourceLocations("file:///C:/Users/lukanin_ns/Desktop/todolist-img/");
+        registry.addResourceHandler("/todo-images/**").addResourceLocations("file:///C:/Users/admin/Desktop/todo-images/");
+        //registry.addResourceHandler("/todolist-img/**").addResourceLocations("file:///C:/Users/lukanin_ns/Desktop/todolist-img/");
     }
 }

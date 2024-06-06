@@ -46,7 +46,8 @@ public class StorageService {
             File newFile = new File(uploadPath + "\\" + newFilename + "." + fileFormat);
             oldFile.renameTo(newFile);
 
-            resourceURI = "\\todolist-img\\" + newFile.getName();
+            resourceURI = "\\todo-images\\" + newFile.getName();
+            //resourceURI = "\\todolist-img\\" + newFile.getName();
             System.out.println("новый путь = " + newFile.getPath());
 
             System.out.println("resourceURI - " + resourceURI);

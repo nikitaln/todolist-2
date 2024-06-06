@@ -89,10 +89,6 @@
 <!--            }-->
         }
 
-        .main-list-tasks .table-tasks {
-            border: 1px solid grey;
-        }
-
         #tasks {
             table-layout: fixed;
         }
@@ -101,38 +97,78 @@
             overflow-wrap: break-word;
         }
 
-        .task-id {
+        tr {
+            text-align: -webkit-center;
+        }
+
+        tr #th-id-task {
+            border: 1px solid grey;
+            width: 50px;
+        }
+
+        tr #th-name-task {
+            border: 1px solid grey;
+            width: 200px;
+        }
+
+        tr #th-name-user {
+            border: 1px solid grey;
+            width: 200px;
+        }
+
+        tr #th-date-task {
+            border: 1px solid grey;
+            width: 150px;
+        }
+
+        tr #th-deadline {
+            border: 1px solid grey;
+            width: 150px;
+        }
+
+        tr #th-days {
+            border: 1px solid grey;
+            width: 100px;
+        }
+
+        tr #th-status {
+            border: 1px solid grey;
+            width: 150px;
+        }
+
+
+
+        #task-id {
             width: 30px;
             margin-right: 10px;
         }
 
-        .task-name {
+        #task-name {
             margin-right: 10px;
         }
 
-        .task-user {
+        #task-user {
             margin-right: 10px;
         }
 
-        .task-start-date {
+        #task-start-date {
             margin-right: 10px;
         }
 
-        .task-finish-date {
+        #task-finish-date {
             margin-right: 10px;
         }
 
 
-        .task-count-days {
+        #task-count-days {
             margin-right: 10px;
         }
 
-        .task-status {
+        #task-status {
             margin-right: 10px;
         }
 
         td div {
             height: 30px;
-            border: 1px solid green;
-            border-radius: 5%;
+            background-color: lightgrey;
         }
