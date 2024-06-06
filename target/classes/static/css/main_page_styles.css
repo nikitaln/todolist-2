@@ -2,7 +2,7 @@
             height: 100%;               /* растягиваем фон на всю страницу */
             font-family: sans-serif;    /* новый шрифт без засечек */
             font-size: 18px;            /* размер шрифта на всей странице */
-            background-color: #ABD3BF;  /* зеленый для фона */
+            text-align: -webkit-center;
         }
 
         h1 {

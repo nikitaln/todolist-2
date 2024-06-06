@@ -31,34 +31,34 @@
         <div class="block-table-users">
             <table id="users-table">
                 <tr>
-                    <th>ИД</th>
-                    <th>Фото</th>
-                    <th>Пользователь</th>
-                    <th>Email</th>
-                    <th>Кол-во задач в работе</th>
-                    <th>Кол-во выполненных</th>
+                    <th id="th-id">ИД</th>
+                    <th id="th-photo">Фото</th>
+                    <th id="th-user">Пользователь</th>
+                    <th id="th-email">Email</th>
+                    <th id="th-task-count-process">Задач в работе</th>
+                    <th id="th-task-count-finish">Задач выполнено</th>
                 </tr>
                 <!--        данные из TaskController где добавляем атрибуты в Model-->
                 <tr th:attr="data-id=${user.id}" th:each="user : ${users}">
                     <td>
-                        <div class="user-id" th:text="${user.id}">1</div>
+                        <div class="td-user-data" id="user-id" th:text="${user.id}">1</div>
                     </td>
                     <td>
-                        <div class="user-photo" >
+                        <div class="td-user-data" id="user-photo" >
                             <img th:src="${user.image}" alt="user-img">
                         </div>
                     </td>
                     <td>
-                        <div class="user-name" th:text="${user.name}">Иван</div>
+                        <div class="td-user-data" id="user-name" th:text="${user.name}">Иван</div>
                     </td>
                     <td>
-                        <div class="user-email" th:text="${user.email}">ivan@mail.ru</div>
+                        <div class="td-user-data" id="user-email" th:text="${user.email}">ivan@mail.ru</div>
                     </td>
                     <td>
-                        <div class="user-tasks-process" th:text="${user.statistics.countInProcessTasks}">2</div>
+                        <div class="td-user-data" id="user-tasks-process" th:text="${user.statistics.countInProcessTasks}">2</div>
                     </td>
                     <td>
-                        <div class="user-tasks-completed" th:text="${user.statistics.countCompletedTasks}">1</div>
+                        <div class="td-user-data" id="user-tasks-completed" th:text="${user.statistics.countCompletedTasks}">1</div>
                     </td>
                 </tr>
             </table>

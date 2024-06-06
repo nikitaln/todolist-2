@@ -2,7 +2,7 @@
             height: 100%;               /* растягиваем фон на всю страницу */
             font-family: sans-serif;    /* новый шрифт без засечек */
             font-size: 18px;            /* размер шрифта на всей странице */
-            background-color: #ABD3BF;  /* зеленый для фона */
+            text-align: -webkit-center; /* все блоки ровно по центру*/
         }
 
         h1 {
@@ -60,37 +60,76 @@
             border: 1px solid grey;
         }
 
-        .user-id {
-            width: 30px;
-            margin-right: 10px;
-            border: 1px solid grey;
+        tr {
+            text-align: -webkit-center;
         }
 
-        .user-name {
+        tr #th-id {
+            border: 1px solid grey;
+            width: 50px;
+        }
+
+        tr #th-photo {
+            border: 1px solid grey;
             width: 100px;
-            margin-right: 10px;
-            border: 1px solid grey;
         }
 
-        .user-email {
-            width: 300px;
-            margin-right: 10px;
+        tr #th-user {
             border: 1px solid grey;
+            width: 250px;
         }
 
-        .user-tasks-process {
-            width: 100px;
-            margin-right: 10px;
+        tr #th-email {
             border: 1px solid grey;
+            width: 250px;
         }
 
-        .user-tasks-completed {
-            width: 100px;
-            margin-right: 10px;
+        tr #th-task-count-process {
             border: 1px solid grey;
+            width: 150px;
+        }
+
+        tr #th-task-count-finish {
+            border: 1px solid grey;
+            width: 150px;
+        }
+
+        td .td-user-data {
+            background-color: lightgrey;
+        }
+
+
+        td #user-id {
+            width: 50px;
+            height: 50px;
+        }
+
+        td #user-photo {
+            background-color: none;
+        }
+
+
+        td #user-name {
+            width: 250px;
+            height: 50px;
+        }
+
+        td #user-email {
+            width: 250px;
+            height: 50px;
+        }
+
+        td #user-tasks-process {
+            width: 150px;
+            height: 50px;
+        }
+
+        td #user-tasks-completed {
+            width: 150px;
+            height: 50px;
         }
 
         img {
-            width: 30px;
-            height: 40px;
+            width: 50px;
+            height: 60px;
         }
