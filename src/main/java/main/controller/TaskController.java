@@ -54,6 +54,7 @@ public class TaskController {
     public String saveTask(Task task) {
         logger.info("POST /save task to database");
 
+        System.out.println(task.getDescription());
         LocalDate dateNow = LocalDate.now();
         task.setStartDateTask(dateNow);
         task.setFinishDateTask(dateNow.plusDays(task.getDeadline()));

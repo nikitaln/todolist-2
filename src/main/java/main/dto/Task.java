@@ -28,6 +28,8 @@ public class Task {
 
     private StatusType status;
 
+    private String description;
+
 
 
     public int getId() {
@@ -86,4 +88,11 @@ public class Task {
         this.status = status;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
